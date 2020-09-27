@@ -87,11 +87,12 @@ HashMap * createMap(long capacity) {
 
     for (i = 0; i < capacity; i++)
     {
-      aux++;
-      map->current = i;
-      map->buckets[i] = NULL;
-      map->size = aux;
-
+      if (map != NULL){
+        aux++;
+        map->current = i;
+        map->buckets[i] = NULL;
+        map->size = aux;
+      }
     }
     map->current = 0;
 
