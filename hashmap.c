@@ -81,13 +81,16 @@ HashMap * createMap(long capacity) {
     HashMap * map = (HashMap *)malloc(sizeof(HashMap));
 
     map->current = 0;
-    map->size = capacity;
+    map->size = 0;
     map->capacity = capacity;
+    int aux = 0;
 
     for (i = 0; i < capacity; i++)
     {
+      aux++;
       map->current = i;
       map->buckets[i] = NULL;
+      map->size = aux;
 
     }
     map->current = 0;
