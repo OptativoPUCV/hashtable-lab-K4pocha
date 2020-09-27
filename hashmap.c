@@ -56,7 +56,7 @@ void insertMap(HashMap * map, char * key, void * value) {
   
   map->buckets[hashKey] = dato;
   map->size++;
-  if (map->size / map->capacity > 0.75) enlarge(map);
+  if (map->size / map->capacity > 0.70) enlarge(map);
   
 }
 
