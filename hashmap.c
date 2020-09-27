@@ -130,7 +130,7 @@ void * firstMap(HashMap * map) {
   long i = 0;
 
 
-  while (map->buckets[i] == NULL || map->buckets[i]->key == NULL)
+  while (map->buckets[i] == NULL || map->buckets[i]->key == NULL) /** Intente recorrer con un while(map->capacity < i, y con if cuando eran != a NULL pero no me salio) **/
   {
     i++;
   }
