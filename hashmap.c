@@ -46,17 +46,17 @@ int is_equal(void* key1, void* key2){
 
 void insertMap(HashMap * map, char * key, void * value) {
 
-  long hashKey = hash(key,map->capacity);
-  Pair * dato = createPair(key,value);
+  long hashKey = hash(key,map->capacity); //poscicion
+  Pair * dato = createPair(key,value);  //Auxiliar para insertar datos
 
-  while (map->buckets[hashKey] != NULL && map->buckets[hashKey]->key != NULL){
-    if(is_equal(map->buckets[hashKey]->key, key) == 1) return;
-    hashKey = (hashKey + 1) % map->capacity;
+  while (map->buckets[hashKey] != NULL && map->buckets[hashKey]->key != NULL){ //Validacion (ciclo) que corre mientras buckets tenga datos y que la key exista
+    if(is_equal(map->buckets[hashKey]->key, key) == 1) return; //Caso en que el dato es repetido
+    hashKey = (hashKey + 1) % map->capacity;  
   }
   
   map->buckets[hashKey] = dato;
   map->size++;
-  if (map->size / map->capacity > 0.70) enlarge(map);
+  if (map->size / map->capacity > 0.70) enlarge(map); //Actualizacion si el mapa se queda sin espacio
   
 }
 
@@ -87,10 +87,10 @@ HashMap * createMap(long capacity) {
 }
 
 void eraseMap(HashMap * map,  char * key) {    
-  long hashKey = hash(key,map->capacity);
+  long hashKey = hash(key,map->capacity); //Buscando posicicon segun funcion hash
   //long pos = hashKey;
 
-  for ( ; hashKey < map->capacity; hashKey++)
+  for ( ; hashKey < map->capacity; hashKey++) //Recorre el mapa hasta ver si el bucket ingresado esta vacio, o hasta que encuentra la key dentro del mapa y la elimina.
   {
     if (map->buckets[hashKey] == NULL) break; //Es void, no void *, por lo que no retorna nada --> usar break
     if(is_equal(map->buckets[hashKey]->key, key) == 1) {
@@ -138,13 +138,22 @@ void * firstMap(HashMap * map) {
 
   return map->buckets[i]->value; **/ 
 
-  map->current = 0;
- return map->buckets[0]->value;
+  /** map->current = 0;
+ return map->buckets[0]->value; **/ 
+ return NULL;
 }
 
 void * nextMap(HashMap * map) {
-
-
+  long i = map->current;
+  i++;
+  for (; i < map->capacity; i++)  //For que recorrera hasta encontrar un bucket con datos
+  {
+    if (map->buckets[i] != NULL)  //Caso en que el siguiente NO esta vacio
+    {
+      map->current = i;
+      return map->buckets[i]->value;
+    }
+  }
 
     return NULL; 
 }
