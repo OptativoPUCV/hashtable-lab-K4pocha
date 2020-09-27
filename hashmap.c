@@ -82,14 +82,14 @@ HashMap * createMap(long capacity) {
 
   map->capacity = capacity;
   map->size = 0;
+  map->current = -1;
+
   int i;
   for (i = 0; i < capacity; i++) {
     if (map->buckets == NULL) return 0;
     else
-      map->buckets[i]->value = NULL;
+      map->buckets[i] = NULL;
   }
-  map->current = 0;
-
   return map;
 }
 
