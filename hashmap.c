@@ -69,10 +69,10 @@ void enlarge(HashMap * map) {
 
 HashMap * createMap(long capacity) {
 
-  HashMap * map = (HashMap *)malloc(sizeof(HashMap));
-  map->buckets = (Pair **) calloc (capacity, sizeof(Pair *));
-
-  map->capacity = capacity;
+  HashMap * map = (HashMap *)malloc(sizeof(HashMap)); //Creacion y reserva del mapa
+  map->buckets = (Pair **) calloc (capacity, sizeof(Pair *)); //Creacion y reserva pares clave-valor mapa
+  //Iniciado default mapa
+  map->capacity = capacity;   
   map->size = 0;
   map->current = -1;
 
@@ -112,9 +112,9 @@ void * searchMap(HashMap * map,  char * key) {
 
   for ( ; hashKey < map->capacity; hashKey++)
   {
-    if (map->buckets[hashKey] != NULL)
+    if (map->buckets[hashKey] != NULL) //Caso en que no hay datos en la pos
     {
-      if (is_equal(map->buckets[hashKey]->key, key))
+      if (is_equal(map->buckets[hashKey]->key, key))  //Son el mismo dato?
       {
         map->current = hashKey;
         return map->buckets[hashKey]->value;
@@ -122,7 +122,6 @@ void * searchMap(HashMap * map,  char * key) {
   
     }
     else break;
-
   }
     return NULL;
 }
