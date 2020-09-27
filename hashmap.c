@@ -125,16 +125,16 @@ void * searchMap(HashMap * map,  char * key) {
 
   for ( ; hashKey < map->capacity; hashKey++)  //Recorrido segun la hashKey. Finaliza si es mayor al tamaño del mapa
   {
-    if (map->buckets[hashKey] != NULL) //Caso en que SI hay datos en la pos
+    if (map->buckets[hashKey] != NULL) //Caso en que SI hay datos en esa poscicion del bucket
     {
       if (is_equal(map->buckets[hashKey]->key, key))  //Son el mismo dato?
       {
         map->current = hashKey;
-        return map->buckets[hashKey]->value;
+        return map->buckets[hashKey]->value;  //Retorna el dato que encontro segun la key
       }
   
     }
-    else break;
+    else if (map->buckets[hashKey] == NULL) break;
   }
     return NULL;
 }
