@@ -62,17 +62,17 @@ void insertMap(HashMap * map, char * key, void * value) {
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
-    Pair ** aux = map->buckets;
+  
+    Pair ** aux = map->buckets; 
     long capacity = map->capacity;
+
+    map->capacity=map->capacity*2;  //Aumento de capacidad del mapa
+    map->buckets=(Pair**) calloc (map->capacity, sizeof(Pair *)); //Redireccionando y reacondicionando memoria de los bukets segun la nueva capacidad
     long i;
-
-    map->capacity=map->capacity*2;
-    map->buckets=(Pair**) calloc (map->capacity, sizeof(Pair *));
-
     for (i = 0; i < capacity; i++){
       if (aux[i] != NULL)
       {
-        insertMap(map,aux[i]->key, aux[i]->value);
+        insertMap(map,aux[i]->key, aux[i]->value); //Insertando buckets con nueva capacidad del mapa
       }
     }
 
