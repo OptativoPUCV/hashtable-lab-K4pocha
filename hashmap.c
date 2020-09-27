@@ -129,14 +129,17 @@ void * searchMap(HashMap * map,  char * key) {
 void * firstMap(HashMap * map) {
   long i = 0;
 
-
-  while (map->buckets[i] == NULL || map->buckets[i]->key == NULL)
+  while (map->capacity < i)
   {
+    if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) //Ciclo que corre   
+    {
+      map->current = i;
+      return map->buckets[i]->value;
+    }
     i++;
   }
-  map->current = i;
 
-  return map->buckets[i]->value;
+  return NULL;
 
   /** map->current = 0;
  return map->buckets[0]->value; **/ 
