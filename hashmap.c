@@ -76,7 +76,7 @@ HashMap * createMap(long capacity) {
   map->size = 0;
   map->current = -1;
 
-  int i;
+  long i;
   for (i = 0; i < capacity; i++) {
     if (map->buckets == NULL) return 0;
     else
@@ -87,12 +87,25 @@ HashMap * createMap(long capacity) {
 }
 
 void eraseMap(HashMap * map,  char * key) {    
-  int hashKey = hash(key,map->capacity);
-  int pos = hashKey;
+  long hashKey = hash(key,map->capacity);
+  //long pos = hashKey;
 
-  map->buckets[pos]->value = NULL;
+  for ( ; hashKey < map->capacity; hashKey++)
+  {
+    if (map->buckets[hashKey] == NULL) break; //Es void, no void *, por lo que no retorna nada --> usar break
+    if(is_equal(map->buckets[hashKey]->key, key) == 1) {
+      map->size--;
+      map->buckets[hashKey]->key = NULL;
+      map->buckets[hashKey]->value = NULL;
+
+    }
+
+
+  }
+
+  /** map->buckets[pos]->value = NULL;
   map->buckets[pos]->key = NULL;
-  map->size--;
+  map->size--; **/ 
   
 }
 

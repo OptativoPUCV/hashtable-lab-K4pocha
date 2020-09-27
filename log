@@ -213,3 +213,9 @@ Sun Sep 27 18:17:37 UTC 2020:
  tests:  6|4
 total_score: 30/70
 ea36639
+Sun Sep 27 18:28:58 UTC 2020: 
+ hashmap.c | 23 ++++++++++++++++++-----
+ 1 file changed, 18 insertions(+), 5 deletions(-)
+ tests:  8|3
+total_score: 40/70
+72a4abd
