@@ -127,7 +127,7 @@ void * searchMap(HashMap * map,  char * key) {
 }
 
 void * firstMap(HashMap * map) {
-  long i = 0;
+  /** long i = 0;
 
 
   while (map->buckets[i] == NULL)
@@ -136,7 +136,10 @@ void * firstMap(HashMap * map) {
   }
   map->current = i;
 
-  return map->buckets[i]->value;
+  return map->buckets[i]->value; **/ 
+
+  map->current = 0;
+ return map->buckets[0]->value;
 }
 
 void * nextMap(HashMap * map) {
