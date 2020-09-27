@@ -89,7 +89,11 @@ HashMap * createMap(long capacity) {
 }
 
 void eraseMap(HashMap * map,  char * key) {    
+  int hashKey = hash(key,map->capacity);
+  int pos = hashKey;
 
+  map->buckets[pos]->value = NULL;
+  map->buckets[pos]->key = NULL;
 
 }
 
