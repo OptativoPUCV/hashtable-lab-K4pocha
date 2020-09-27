@@ -138,9 +138,9 @@ void * firstMap(HashMap * map) {
 
   return map->buckets[i]->value; **/ 
 
-  /** map->current = 0;
- return map->buckets[0]->value; **/ 
- return NULL;
+  map->current = 0;
+ return map->buckets[0]->value;
+ //return NULL;
 }
 
 void * nextMap(HashMap * map) {
