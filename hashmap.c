@@ -80,17 +80,15 @@ HashMap * createMap(long capacity) {
 
   HashMap * map = (HashMap *)malloc(sizeof(HashMap));
 
-  map->current = 0;
   map->capacity = capacity;
   map->size = 0;
-  //int i;
-  /**for (i = 0; i < capacity; i++)
- {
-    map->current = i;
+  int i;
+  for (i = 0; i < capacity; i++) {
     if (map->buckets != NULL)
       map->buckets[i]->value = NULL;
   }
-**/
+  map->current = 0;
+
   return NULL;
 }
 
