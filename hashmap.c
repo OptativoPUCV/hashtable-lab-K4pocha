@@ -89,7 +89,7 @@ HashMap * createMap(long capacity) {
   }
   map->current = 0;
 
-  return NULL;
+  return map;
 }
 
 void eraseMap(HashMap * map,  char * key) {    
