@@ -81,9 +81,8 @@ HashMap * createMap(long capacity) {
   HashMap * map = (HashMap *)malloc(sizeof(HashMap));
 
   map->current = 0;
-  map->size = capacity;
   map->capacity = capacity;
-  map = NULL;
+  map->size = 0;
   //int i;
   /**for (i = 0; i < capacity; i++)
  {
