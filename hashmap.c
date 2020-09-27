@@ -94,6 +94,8 @@ void eraseMap(HashMap * map,  char * key) {
 
   map->buckets[pos]->value = NULL;
   map->buckets[pos]->key = NULL;
+  map->size--;
+  return;
 
 }
 
