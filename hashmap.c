@@ -99,8 +99,6 @@ void eraseMap(HashMap * map,  char * key) {
       map->buckets[hashKey]->value = NULL;
 
     }
-
-
   }
 
   /** map->buckets[pos]->value = NULL;
@@ -110,8 +108,22 @@ void eraseMap(HashMap * map,  char * key) {
 }
 
 void * searchMap(HashMap * map,  char * key) {   
+  long hashKey = hash(key, map->capacity);
 
+  for ( ; hashKey < map->capacity; hashKey++)
+  {
+    if (map->buckets[hashKey] != NULL)
+    {
+      if (is_equal(map->buckets[hashKey]->key, key))
+      {
+        map->current = hashKey;
+        return map->buckets[hashKey]->value;
+      }
+  
+    }
+    else break;
 
+  }
     return NULL;
 }
 
